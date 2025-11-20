@@ -93,12 +93,14 @@ To understand the code, we need to understand how the JSON file is built. Salesf
 
 Let's start with the helper functions:
 
-merge_widgets	- It merges widgets by unique names and appends if missing	(json)
-merge_by_label	- It merges the widgets inside matching pages by checking unique names and labels		(uses merge_by_widgets helper)
-merge_gridlayout	- Checks JSON grid layout by unique name and label to avoid duplicates		(uses merge_by_label helper)
-merge_generic_list	- Check the JSON files. If any item is not in the other, it adds it to the output.	(json)
-show_query_diff	- It handles the coloring of the differences between V1 and V2	(difflib, colorama)
-handle_difference	- It is an interactive function that checks if the queries in V1 and V2 differ. If there's a mismatch, we can choose the preferred version.	(files)	
+| Name | Purpose | Comment |
+|------|---------|---------|
+| merge_widgets | It merges widgets by unique names and appends if missing |	(json) |
+| merge_by_label	| It merges the widgets inside matching pages by checking unique names and labels	|	(uses merge_by_widgets helper) |
+| merge_gridlayout	| Checks JSON grid layout by unique name and label to avoid duplicates	|	(uses merge_by_label helper) |
+| merge_generic_list	| Check the JSON files. If any item is not in the other, it adds it to the output.	| (json) |
+| show_query_diff	| It handles the coloring of the differences between V1 and V2	| (difflib, colorama) |
+| handle_difference	| It is an interactive function that checks if the queries in V1 and V2 differ. If there's a mismatch, we can choose the preferred version.	| (files) |
 
 Then we have the main function, that is the helpers above. Additionally, it uses isinstance() function, which returns true is the object is of the specified type.
 
