@@ -93,34 +93,46 @@ To understand the code, we need to understand how the JSON file is built. Salesf
 
 Let's start with the helper functions:
 
-| Name | Purpose | Comment |
-|------|---------|---------|
-| merge_widgets | It merges widgets by unique names and appends if missing |	(json) |
-| merge_by_label	| It merges the widgets inside matching pages by checking unique names and labels	|	(uses merge_by_widgets helper) |
-| merge_gridlayout	| Checks JSON grid layout by unique name and label to avoid duplicates	|	(uses merge_by_label helper) |
-| merge_generic_list	| Check the JSON files. If any item is not in the other, it adds it to the output.	| (json) |
-| show_query_diff	| It handles the coloring of the differences between V1 and V2	| (difflib, colorama) |
-| handle_difference	| It is an interactive function that checks if the queries in V1 and V2 differ. If there's a mismatch, we can choose the preferred version.	| (files) |
+
+| Name | Purpose | Library | Comment |
+|------|---------|---------|---------|
+| merge_widgets | It merges widgets by unique names and appends if missing |	(json) | |
+| merge_by_label	| It merges the widgets inside matching pages by checking unique names and labels	|	| (uses merge_by_widgets helper) |
+| merge_gridlayout	| Checks JSON grid layout by unique name and label to avoid duplicates	|	| (uses merge_by_label helper) |
+| merge_generic_list	| Check the JSON files. If any item is not in the other, it adds it to the output.	| (json) | |
+| show_query_diff	| It handles the coloring of the differences between V1 and V2	| (difflib, colorama) | |
+| handle_difference	| It is an interactive function that checks if the queries in V1 and V2 differ. If there's a mismatch, we can choose the preferred version.	| (files) | |
+
 
 Then we have the main function, that is the helpers above. Additionally, it uses isinstance() function, which returns true is the object is of the specified type.
 
-merge_dicts	- Uses all the helpers above to merge the JSON files. It allows the user to define which version of the mismatching queries to use.		
-run_jsonmerge	- Runs the function and saves the output in the file defined in the settings.py	json
+
+| Function | Purpose | Library | Comment |
+|----------|---------|---------|---------|
+| merge_dicts	| Uses all the helpers above to merge the JSON files. It allows the user to define which version of the mismatching queries to use.	| | |
+| run_jsonmerge	| Runs the function and saves the output in the file defined in the settings.py |	json | |
+
+
 
 3.3	XML Merge
 
-remove_namespaces	- Removes spaces in the names of the XML tags		
-elements_equal	- Compares tags, attributes, text, and children in XML		
-find_matching_element -	Finds element that fits the tree-based on tags and attributes		
-merge_if_different	- Appends elements from V1 or V1 if they are different than original	copy	
-deduplicate_elements_by_tag_and_field	- Removes duplicates of tags in fields		
-ensure_wave_visualization_name	- Ensures the name of wave Visualisation taken from settings.py 		
-ensure_meta_name	- Sets masterLabel and application defined in settings.py		
-sort_children_alphabetically	- Sorts XML children tag alphabetically		
-ensure_all_fields_from_steps_exist	- Ensures all steps in the output JSON have the XML fields based on "query_name"		
-get_fields_by_type	- Returns element for tag in dimensions/measures.		
-get_element_by_step	- Returns element by step name that starts after "."		
-find_in_sources	- Finds field in measures and dimensions to append missing element.		
+
+| Function | Purpose |
+|----------|---------|
+| remove_namespaces	| Removes spaces in the names of the XML tags |
+| elements_equal	| Compares tags, attributes, text, and children in XML |
+| find_matching_element |	Finds element that fits the tree-based on tags and attributes |
+| merge_if_different	| Appends elements from V1 or V1 if they are different than original |
+| deduplicate_elements_by_tag_and_field	| Removes duplicates of tags in fields	|
+| ensure_wave_visualization_name	| Ensures the name of wave Visualisation taken from settings.py |
+| ensure_meta_name	| Sets masterLabel and application defined in settings.py |
+| sort_children_alphabetically	| Sorts XML children tag alphabetically	|
+| ensure_all_fields_from_steps_exist	| Ensures all steps in the output JSON have the XML fields based on "query_name" |
+| get_fields_by_type	| Returns element for tag in dimensions/measures. |
+| get_element_by_step	| Returns element by step name that starts after "." |
+| find_in_sources	| Finds field in measures and dimensions to append missing element.	|
+
+
 
 3.4	Main Function
 
