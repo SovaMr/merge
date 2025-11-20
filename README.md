@@ -65,7 +65,7 @@ settings	- Import objects from settings.py
 3.2	JSON Merge
 
 To understand the code, we need to understand how the JSON file is built. Salesforce Dashboards always have the same structure:
-
+```
 {
     "gridlayouts": [
         {
@@ -89,7 +89,7 @@ To understand the code, we need to understand how the JSON file is built. Salesf
         }
     }
 }
-
+```
 
 Let's start with the helper functions:
 
